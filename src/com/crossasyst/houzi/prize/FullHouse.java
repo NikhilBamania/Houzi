@@ -1,7 +1,5 @@
 package com.crossasyst.houzi.prize;
 
-import com.crossasyst.houzi.ticket.Ticket;
-
 public class FullHouse {
 	
 	static FullHouse fullHouse;
@@ -16,9 +14,9 @@ public class FullHouse {
 		return fullHouse;
 	}
 	
-	synchronized public boolean check(Ticket ticket)
+	synchronized public boolean check(byte count)
 	{
-		if(!status && ticket.getCount() == 15)
+		if(!status && count == 15)
 			status = true;
 		return status;
 	}

@@ -1,7 +1,5 @@
 package com.crossasyst.houzi.prize;
 
-import com.crossasyst.houzi.ticket.Ticket;
-
 public class MidRow {
 	
 	static MidRow midRow;
@@ -16,9 +14,9 @@ public class MidRow {
 		return midRow;
 	}
 	
-	synchronized public boolean check(Ticket ticket)
+	synchronized public boolean check(byte count)
 	{
-		if(!status && ticket.getMidcount() == 5)
+		if(!status && count == 5)
 			status = true;
 		return status;
 	}

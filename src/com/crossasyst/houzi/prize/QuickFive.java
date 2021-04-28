@@ -1,7 +1,5 @@
 package com.crossasyst.houzi.prize;
 
-import com.crossasyst.houzi.ticket.Ticket;
-
 public class QuickFive {
 	
 	static QuickFive quickFive;
@@ -16,9 +14,9 @@ public class QuickFive {
 		return quickFive;
 	}
 	
-	synchronized public boolean check(Ticket ticket)
+	synchronized public boolean check(byte count)
 	{
-		if(!status && ticket.getCount() == 5)
+		if(!status && count == 5)
 			status = true;
 		return status;
 	}
