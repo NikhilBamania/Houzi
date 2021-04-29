@@ -10,6 +10,7 @@ public class NumberGenerator {
 	//tracking checked numbers
 	private Set<Byte> container = new HashSet<Byte>();
 	static NumberGenerator numberGenerator = null;
+	byte number;
 	
 	private NumberGenerator() {}
 	
@@ -20,10 +21,8 @@ public class NumberGenerator {
 		return numberGenerator;
 	}
 	
-	
 	public byte generateNumber()
 	{
-		byte number;
 		do
 		{
 			number = (byte) (TicketNumberGenerator.generateValue((byte)90) + 1);
@@ -31,6 +30,30 @@ public class NumberGenerator {
 		
 		container.add(number);		
 		return number;		
+	}
+	
+	public void startNumberGenerator()
+	{
+		while(container.size() != 90)
+		{
+			synchronized (numberGenerator)
+			{
+				try
+				{
+					Thread.sleep(1000);
+					numberGenerator.wait();
+				}catch (InterruptedException e)
+				{
+					System.out.println("Wait in Number Generator");
+					e.printStackTrace();
+				}
+
+				generateNumber();
+				System.out.println(number);
+				
+				numberGenerator.notifyAll();
+			}
+		}
 	}
 
 }

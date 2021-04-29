@@ -13,5 +13,4 @@ public class TicketLocationGenerator {
 		}while(row[location] != null);			//check for the non repeating location
 		return location;
 	}
-
 }

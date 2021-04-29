@@ -1,29 +1,32 @@
 package com.crossasyst.houzi.play;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.crossasyst.houzi.generator.NumberGenerator;
 import com.crossasyst.houzi.ticket.Ticket;
 
 public class StartPlay {
+
 	NumberGenerator monitor = null;
-	ArrayList<Ticket> tickets = null;
+	List<Ticket> tickets = null;
 	TicketArray ticketArray = null;
 	Scanner sc = null;
 	
 	public void start() {
 		
-		
-		ticketArray = new TicketArray();
 		sc = new Scanner(System.in);
-		System.out.println("Enter the total number of tickets");
+		System.out.print("Enter number of Tickets: ");
 		int n = sc.nextInt();
-		
+		System.out.println();
+		ticketArray = new TicketArray();
 		tickets = ticketArray.getTickets(n);
 		
+		
+		//print ticket
 		for(int i=0; i<tickets.size(); i++)
 			System.out.println(tickets.get(i).toString());
+		
 		
 		NumberGenerator numberGenerator = NumberGenerator.getNumberGenerator();
 		
@@ -38,22 +41,5 @@ public class StartPlay {
 					break;
 			}
 		}
-		
-		destruct();
-		System.gc();
-		System.out.println("play ended");
-		
 	}
-	
-	private void destruct() {
-		if(sc != null)
-			sc.close();
-		if(ticketArray != null)
-			ticketArray = null;
-		if(tickets != null)
-			tickets = null;
-		if(monitor != null)
-			monitor = null;
-	}
-
 }

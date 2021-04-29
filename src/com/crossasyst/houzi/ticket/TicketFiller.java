@@ -21,7 +21,7 @@ public class TicketFiller {
 	}
 	
 	private Cell[] fillRow(Cell[] row, byte numberOfLocations)
-{
+	{
 		//calling the fill method to fill row
 		RandomLocationNumberFiller randomLocationNumberFiller = RandomLocationNumberFiller.getRandomLocationNumberFiller();
 		randomLocationNumberFiller.setHasFilledWith(this.hasFilledWith);
@@ -67,6 +67,4 @@ public class TicketFiller {
 		
 		return emptyColumns;
 	}
-
-
 }
