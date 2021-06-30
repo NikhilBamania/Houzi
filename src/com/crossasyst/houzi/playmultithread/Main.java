@@ -21,7 +21,7 @@ public class Main {
 		for(int i=0; i<n; i++)
 		{
 			Thread thread = new Thread(playTickets);
-			thread.setPriority(8);
+			thread.setPriority(7);
 			thread.start();
 		}
 		
